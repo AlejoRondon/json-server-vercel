@@ -11,6 +11,15 @@ const server = jsonServer.create()
 // const db = JSON.parse(data);
 // const router = jsonServer.router(db)
 
+ server.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+ });
+
 // Comment out to allow write operations
 const router = jsonServer.router('db.json')
 
